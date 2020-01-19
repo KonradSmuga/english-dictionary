@@ -20,8 +20,8 @@ public class Words {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "words")
-    private String word;
+    @Column(name = "name")
+    private String name;
 
     @ManyToOne
     private Categories categories;
