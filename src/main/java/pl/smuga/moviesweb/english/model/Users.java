@@ -24,6 +24,9 @@ public class Users {
     @Column(name = "password")
     private String password;
 
-    @OneToMany()
+    @OneToMany(targetEntity = UserWords.class,
+
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     List<UserWords> userWordsList;
 }

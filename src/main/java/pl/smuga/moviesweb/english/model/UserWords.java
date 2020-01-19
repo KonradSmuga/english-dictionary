@@ -4,21 +4,30 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.User;
-import org.graalvm.compiler.word.Word;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity(name = "userwords")
 public class UserWords {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private Word word;
-    private User user;
+
+    @ManyToOne (cascade= CascadeType.ALL)
+    private Words word;
+
+    @ManyToOne(cascade= CascadeType.ALL)
+    private Users user;
+
+    @Column(name = "startDate")
     private Date startDate;
+    @Column(name = "endDate")
     private Date endDate;
 
 }

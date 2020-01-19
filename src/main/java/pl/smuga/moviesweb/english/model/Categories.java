@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,7 +22,10 @@ public class Categories {
     @Column(name = "type")
     private String type;
 
-    @OneToMany
+    @OneToMany(targetEntity = Words.class,
+            mappedBy = "categories",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     List<Words> listOfWords;
 
 
